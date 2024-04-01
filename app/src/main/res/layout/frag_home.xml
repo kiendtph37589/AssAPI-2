@@ -30,6 +30,12 @@
 
                 >
                 <ImageView
+                    android:id="@+id/img_logout_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_logout_24"
+                    />
+                <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/person"
