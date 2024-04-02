@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "861772362275",
+    "firebase_url": "https://restapi-ca6d2-default-rtdb.firebaseio.com",
+    "project_id": "restapi-ca6d2",
+    "storage_bucket": "restapi-ca6d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861772362275:android:14689fb4a06ecd9f14f796",
+        "android_client_info": {
+          "package_name": "com.kiendtph37589.assigmentapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861772362275-e47ih9k3s4vu4f5hsbu4dgc9cfmmtpiv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kiendtph37589.assigmentapi",
+            "certificate_hash": "405836ebcb7f7ae78c4cff58425e46c6fad11961"
+          }
+        },
+        {
+          "client_id": "861772362275-r00pv41is3n36bh24t33vraj6m69o2jk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiY9W1i3xaECvH5Yo_IsleMrPjQn665Ak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861772362275-r00pv41is3n36bh24t33vraj6m69o2jk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

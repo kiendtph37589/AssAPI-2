@@ -11,36 +11,55 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 
+import com.kiendtph37589.assigmentapi.Adapter.ProductAdapter;
+import com.kiendtph37589.assigmentapi.Interface.InterSelectProd;
 import com.kiendtph37589.assigmentapi.Login;
+import com.kiendtph37589.assigmentapi.Model.ProductsModel;
 import com.kiendtph37589.assigmentapi.R;
+import com.kiendtph37589.assigmentapi.Server.RetrofitClient;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class HomeFrag extends Fragment {
-//    ViewPager2 viewPager2;
     RecyclerView recycler_home;
     ViewFlipper v_flipper;
     ImageView img_logout;
-    private Handler handler = new Handler();
+
+    ProductAdapter productAdapter;
+    List<ProductsModel> listPro = new ArrayList<>();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_home, container, false);
-//        viewPager2 = view.findViewById(R.id.view_paper2);
         recycler_home = view.findViewById(R.id.recyclerView);
         img_logout = view.findViewById(R.id.img_logout_home);
+        selectRetrofit();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false);
+        recycler_home.setLayoutManager(layoutManager);
+        productAdapter = new ProductAdapter(listPro);
+        recycler_home.setAdapter(productAdapter);
+
+
+
         img_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,9 +91,7 @@ public class HomeFrag extends Fragment {
             }
         });
 
-        //RecyclerView
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
-        recycler_home.setLayoutManager(layoutManager);
+
 
 
 
@@ -90,6 +107,26 @@ public class HomeFrag extends Fragment {
         }
     return view;
     }
+    String strkq = "";
+    List<ProductsModel> listsp;
+    private void selectRetrofit() {
+        RetrofitClient.getRetrofitClient().getProd().enqueue(new Callback<List<ProductsModel>>() {
+            @Override
+            public void onResponse(Call<List<ProductsModel>> call, Response<List<ProductsModel>> response) {
+                if (response.isSuccessful() && response.body() != null){
+                    listPro.addAll(response.body());
+                    productAdapter.notifyDataSetChanged();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ProductsModel>> call, Throwable t) {
+                Toast.makeText(getActivity(), "onFailure" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     public void flipperImages(int image){
         ImageView imageView = new ImageView(getContext());
         imageView.setBackgroundResource(image);

@@ -36,6 +36,11 @@
                 />
         </androidx.cardview.widget.CardView>
         <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_Id"/>
+        <TextView
             android:id="@+id/tv_name_sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,6 +58,7 @@
             android:text="500gm"
             />
         <TextView
+            android:id="@+id/tv_giasp_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="14.295"
