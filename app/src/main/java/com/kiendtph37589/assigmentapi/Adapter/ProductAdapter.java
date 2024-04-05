@@ -1,5 +1,9 @@
 package com.kiendtph37589.assigmentapi.Adapter;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,19 +15,43 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.kiendtph37589.assigmentapi.Activity.Product_details;
 import com.kiendtph37589.assigmentapi.Model.ProductsModel;
 import com.kiendtph37589.assigmentapi.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
     private List<ProductsModel> ProList;
+    private Context context;
+    private List<String> favoriteProducts;
+    private OnFavoriteClickListener favoriteClickListener;
 
-    public ProductAdapter(List<ProductsModel> proList) {
+
+    public ProductAdapter(List<ProductsModel> proList, Context context) {
         ProList = proList;
-    }
+        this.context = context;
 
+        favoriteProducts = new ArrayList<>();
+    }
+    public interface OnFavoriteClickListener{
+        void onFavoriteClick(ProductsModel products);
+    }
+    public void setOnFavoriteClickListener(OnFavoriteClickListener listener){
+        this.favoriteClickListener = listener;
+    }
+    public void addFavoriteProduct(String productId){
+        favoriteProducts.add(productId);
+    }
+    private void removeFavoriteProduct(String productId){
+        favoriteProducts.remove(productId);
+    }
+    public void setData(List<ProductsModel> newData){
+        this.ProList = newData;
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public ProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,10 +61,26 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        boolean isFavorite = favoriteProducts.contains(ProList.get(position).get_id());
+        if (isFavorite){
+            holder.img_love_home.setImageResource(R.drawable.love_red);
+        }else {
+            holder.img_love_home.setImageResource(R.drawable.love);
+        }
         holder.img_love_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (favoriteClickListener != null){
+                    favoriteClickListener.onFavoriteClick(ProList.get(position));
+                }
+                if (favoriteProducts.contains(ProList.get(position).get_id())){
+                    removeFavoriteProduct(ProList.get(position).get_id());
+                    holder.img_love_home.setImageResource(R.drawable.love);
+                }else {
+                    addFavoriteProduct(ProList.get(position).get_id());
+                    holder.img_love_home.setImageResource(R.drawable.love_red);
+                }
 
             }
         });
@@ -49,6 +93,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             @Override
             public void onClick(View v) {
 
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,Product_details.class);
+                intent.putExtra("product_id",ProList.get(position).get_id());
+                intent.putExtra("product_image",ProList.get(position).getAnhsp());
+                intent.putExtra("product_name",ProList.get(position).getTensp());
+                intent.putExtra("product_price",ProList.get(position).getGiasp());
+                intent.putExtra("product_weight",ProList.get(position).getKhoiluongsp());
+                intent.putExtra("product_describe",ProList.get(position).getMota());
+
+                context.startActivity(intent);
             }
         });
     }

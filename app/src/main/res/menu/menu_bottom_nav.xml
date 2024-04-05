@@ -6,11 +6,11 @@
         android:icon="@drawable/home3"
         android:title="@string/action_home"/>
 
-    <item android:id="@+id/action_cart"
+    <item android:id="@+id/action_order"
         android:icon="@drawable/tui"
         android:title="@string/action_cart"/>
 
-    <item android:id="@+id/action_order"
+    <item android:id="@+id/action_cart"
             android:icon="@drawable/shopping_cart"
             android:title="@string/action_order"/>
     <item android:id="@+id/action_myfavorite"

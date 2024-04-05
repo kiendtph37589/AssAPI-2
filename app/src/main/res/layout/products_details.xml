@@ -1,7 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical"
+    tools:context=".Activity.Product_details"
+    android:background="@drawable/custom_product_detail"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    >
+
+            <LinearLayout
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_back_pro_details"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/back"
+                    />
+                <TextView
+                    android:id="@+id/tv_title_sp"
+                    android:textSize="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Organic Orange"
+
+                    />
+            </LinearLayout>
+<!--        <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="200dp"-->
+<!--        app:cardCornerRadius="50dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:backgroundTint="#ff0"-->
+<!--        android:layout_marginTop="100dp"-->
+<!--        >-->
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:cardCornerRadius="20dp"
+            android:layout_marginBottom="10dp">
+            <ImageView
+                android:id="@+id/img_image_sp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:src="@drawable/orange1" />
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/tv_name_sp"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:text="Organic Orange"
+                />
+            <TextView
+                android:id="@+id/tv_price_sp"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="14.295"/>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        >
+        <TextView
+            android:id="@+id/tv_weight_sp"
+            android:layout_marginRight="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="250gm"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_describe_sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Orange is a familiar fruit, easy to buy, easy to store or process."
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:paddingHorizontal="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/img_add"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/add"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:id="@+id/tv_tv_quantity_sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:text="1"/>
+        <ImageView
+            android:id="@+id/img_minus_sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/minus"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_add_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add to Cart"
+        android:textSize="20dp"
+        android:backgroundTint="#0DBB34"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+
+        </LinearLayout>
+</LinearLayout>

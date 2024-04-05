@@ -2,17 +2,19 @@ package com.kiendtph37589.assigmentapi.Model;
 
 public class ProductsModel {
     private String _id;
-    private String anhsp,tensp,khoiluongsp,giasp;
+    private String anhsp,tensp,khoiluongsp,giasp,mota;
+
 
     public ProductsModel() {
     }
 
-    public ProductsModel(String _id, String anhsp, String tensp, String khoiluongsp, String giasp) {
+    public ProductsModel(String _id, String anhsp, String tensp, String khoiluongsp, String giasp, String mota) {
         this._id = _id;
         this.anhsp = anhsp;
         this.tensp = tensp;
         this.khoiluongsp = khoiluongsp;
         this.giasp = giasp;
+        this.mota = mota;
     }
 
     public String get_id() {
@@ -53,5 +55,13 @@ public class ProductsModel {
 
     public void setGiasp(String giasp) {
         this.giasp = giasp;
+    }
+
+    public String getMota() {
+        return mota;
+    }
+
+    public void setMota(String mota) {
+        this.mota = mota;
     }
 }

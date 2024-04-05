@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">AssigmentAPI</string>
     <string name="action_home">Home</string>
-    <string name="action_cart">Cart</string>
-    <string name="action_order">Order</string>
+    <string name="action_cart">Order</string>
+    <string name="action_order">Cart</string>
     <string name="action_myFavorite">MyFavorite</string>
     <string name="default_web_client_id" translatable="false">861772362275-r00pv41is3n36bh24t33vraj6m69o2jk.apps.googleusercontent.com</string>
-<!--    <string name="default_web_client_id">861772362275-r00pv41is3n36bh24t33vraj6m69o2jk.apps.googleusercontent.com</string>-->
+    <!--    <string name="default_web_client_id">861772362275-r00pv41is3n36bh24t33vraj6m69o2jk.apps.googleusercontent.com</string>-->
 </resources>
